@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — Chop Belleful</title>
+  <meta name="description" content="Get in touch with Chop Belleful. WhatsApp, email, or visit us in Calabar, Cross River State." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info > p { margin-bottom: 36px; }
+
+    .contact-channel {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      margin-bottom: 16px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-channel:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow);
+    }
+    .ch-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .ch-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 3px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+    .ch-value { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+    .ch-note  { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+    .contact-form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .contact-form-card h3 { margin-bottom: 6px; }
+    .contact-form-card > p { font-size: 0.9rem; margin-bottom: 28px; }
+
+    .hours-section {
+      background: var(--black);
+      padding: 60px 5%;
+    }
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .hours-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+    }
+    .hours-day  { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+    .hours-time { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .hours-note { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    .faq-section {}
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+    .faq-q .arrow { transition: transform 0.25s; font-size: 1.1rem; flex-shrink: 0; }
+    .faq-q.open .arrow { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 0 20px; }
+    .faq-a.open { display: block; }
+    .faq-a p { font-size: 0.92rem; }
+
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+      .hours-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Chop <span>Belleful</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="order.html" class="nav-cta">Order Now</a></li>
+  </ul>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Get in Touch</span>
+  <h1>We're Always Here</h1>
+  <p>Questions, catering inquiries, complaints, or just want to say you loved your meal — reach us any time.</p>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- LEFT: channels -->
+      <div>
+        <span class="section-tag">Contact Channels</span>
+        <h2 style="margin-bottom:12px;">How to Reach Us</h2>
+        <p style="margin-bottom:32px;">WhatsApp is fastest for orders. Use email or the form for catering bookings, feedback, and everything else.</p>
+
+        <a href="https://wa.me/2348000000000?text=Hello%20Chop%20Belleful!" target="_blank" class="contact-channel">
+          <div class="ch-icon" style="background:#dcfce7;">💬</div>
+          <div>
+            <div class="ch-label">WhatsApp (Fastest)</div>
+            <div class="ch-value">+234 800 000 0000</div>
+            <div class="ch-note">For orders — we reply within 5 minutes during business hours</div>
+          </div>
+        </a>
+
+        <a href="tel:+2348000000000" class="contact-channel">
+          <div class="ch-icon" style="background:#fee2e2;">📞</div>
+          <div>
+            <div class="ch-label">Phone</div>
+            <div class="ch-value">+234 800 000 0000</div>
+            <div class="ch-note">Mon–Sun, 9am–9pm</div>
+          </div>
+        </a>
+
+        <a href="mailto:hello@chopbelleful.com" class="contact-channel">
+          <div class="ch-icon" style="background:#eff6ff;">📧</div>
+          <div>
+            <div class="ch-label">Email</div>
+            <div class="ch-value">hello@chopbelleful.com</div>
+            <div class="ch-note">For catering inquiries and partnerships</div>
+          </div>
+        </a>
+
+        <a href="#" class="contact-channel">
+          <div class="ch-icon" style="background:#fef9c3;">📍</div>
+          <div>
+            <div class="ch-label">Location</div>
+            <div class="ch-value">Calabar, Cross River State</div>
+            <div class="ch-note">We deliver across Calabar Municipal and South</div>
+          </div>
+        </a>
+
+        <div style="margin-top:28px;">
+          <div style="font-size:0.82rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;">Find Us on Social</div>
+          <div style="display:flex;gap:12px;">
+            <a href="#" style="background:var(--white);border:1px solid var(--border);width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--text);transition:all 0.2s;" onmouseover="this.style.background='#E1306C';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--text)'">IG</a>
+            <a href="#" style="background:var(--white);border:1px solid var(--border);width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--text);transition:all 0.2s;" onmouseover="this.style.background='#1877F2';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--text)'">FB</a>
+            <a href="#" style="background:var(--white);border:1px solid var(--border);width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--text);transition:all 0.2s;" onmouseover="this.style.background='#000';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--text)'">X</a>
+            <a href="#" style="background:var(--white);border:1px solid var(--border);width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--text);transition:all 0.2s;" onmouseover="this.style.background='#000';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='var(--text)'">TK</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: form -->
+      <div class="contact-form-card">
+        <h3>Send Us a Message</h3>
+        <p>For catering bookings, partnerships, or general enquiries.</p>
+
+        <div id="contact-success" style="display:none;background:#d4edda;border:1px solid #c3e6cb;border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;color:#155724;font-size:0.9rem;font-weight:500;">
+          ✅ Message sent! We'll get back to you within 24 hours.
+        </div>
+
+        <form id="contactForm" onsubmit="sendMessage(event)" novalidate>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div class="form-group">
+              <label for="c-name">Your Name *</label>
+              <input type="text" id="c-name" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label for="c-phone">Phone / WhatsApp *</label>
+              <input type="tel" id="c-phone" placeholder="080XXXXXXXX" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" placeholder="you@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="c-subject">Subject *</label>
+            <select id="c-subject" required>
+              <option value="">Choose a subject</option>
+              <option value="order">Order Inquiry</option>
+              <option value="catering">Catering Booking</option>
+              <option value="feedback">Feedback</option>
+              <option value="complaint">Complaint</option>
+              <option value="partnership">Partnership / Business</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="c-msg">Message *</label>
+            <textarea id="c-msg" rows="5" placeholder="Tell us what's on your mind..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<div class="hours-section">
+  <div class="container">
+    <div style="text-align:center;">
+      <span class="section-tag">Opening Hours</span>
+      <h2 style="color:var(--white);margin-top:8px;">When We're Open</h2>
+    </div>
+    <div class="hours-grid">
+      <div class="hours-card">
+        <div class="hours-day">Monday – Friday</div>
+        <div class="hours-time">9:00am – 9:00pm</div>
+        <div class="hours-note">Full menu available all day</div>
+      </div>
+      <div class="hours-card" style="border-color:rgba(230,126,34,0.4);">
+        <div class="hours-day">Saturday</div>
+        <div class="hours-time">8:00am – 10:00pm</div>
+        <div class="hours-note">Extended hours + specials</div>
+      </div>
+      <div class="hours-card">
+        <div class="hours-day">Sunday</div>
+        <div class="hours-time">11:00am – 8:00pm</div>
+        <div class="hours-note">Sunday rice available from 12pm</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="section-center" style="margin-bottom:40px;">
+      <span class="section-tag">FAQ</span>
+      <h2>Quick Answers</h2>
+    </div>
+    <div class="faq-section">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">
+          How do I place an order? <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <p>You can order via our <a href="order.html" style="color:var(--red);">online order form</a> or message us directly on WhatsApp at +234 800 000 0000. For group orders or catering, use the contact form above so we can plan properly.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">
+          What areas do you deliver to? <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <p>We currently deliver within Calabar Municipal, Calabar South, Watt Market area, State Housing, UNICAL area, and Marian Road. If you're outside these areas, contact us and we'll see if we can accommodate you.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">
+          How much is delivery? <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Delivery is NGN 500 flat fee. Orders above NGN 5,000 qualify for free delivery within our standard coverage area.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">
+          How do I pay? <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <p>We accept bank transfer (we'll send our account details after you confirm your order) and cash on delivery. No POS at this time, but we're working on it.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">
+          Do you handle catering for events? <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes! We cater for parties, office events, weddings, burials, and any occasion. Minimum notice is 48 hours for catering. Contact us via the form above or WhatsApp with your event date, number of guests, and preferred menu to get a quote.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)">
+          Can I request custom spice levels? <span class="arrow">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Absolutely. When placing your order, let us know your preferred spice level: mild, medium, hot, or very hot (danger zone). We'll cook accordingly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Chop <span>Belleful</span></div>
+        <p class="footer-tagline">Real Nigerian food, real portions, real satisfaction.</p>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html">About Us</a><a href="order.html">Order Now</a></div>
+      <div class="footer-col"><h4>Info</h4><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://wa.me/2348000000000">WhatsApp Us</a><a href="mailto:hello@chopbelleful.com">hello@chopbelleful.com</a><a href="#">Calabar, Cross River</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Chop Belleful. All rights reserved.</span>
+      <span>Made with ❤️ in Calabar</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2348000000000" target="_blank" class="whatsapp-float">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+function toggleFAQ(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+function sendMessage(e) {
+  e.preventDefault();
+  document.getElementById('contact-success').style.display = 'block';
+  e.target.reset();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

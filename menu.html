@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu — Chop Belleful</title>
+  <meta name="description" content="Browse the full Chop Belleful menu. Soups, rice dishes, swallows, proteins, and more — all real Nigerian food." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .menu-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      padding: 9px 22px;
+      border-radius: 30px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+    .menu-section { margin-bottom: 64px; }
+    .menu-section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--black);
+      border-left: 4px solid var(--red);
+      padding-left: 16px;
+      margin-bottom: 28px;
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .menu-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    .menu-item-img {
+      aspect-ratio: 16/9;
+    }
+    .menu-item-img .food-img {
+      width: 100%; height: 100%;
+    }
+    .menu-item-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .menu-item-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .menu-item-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .menu-item-price {
+      font-weight: 700;
+      color: var(--red);
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+    .menu-item-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .menu-item-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .spice-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .spice-tag .dot {
+      color: var(--red);
+    }
+    @media (max-width: 600px) {
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Chop <span>Belleful</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="order.html" class="nav-cta">Order Now</a></li>
+  </ul>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Our Menu</span>
+  <h1>The Full Menu</h1>
+  <p>From soups that warm your soul to rice that makes you forget your problems. Every item is real, fresh, and made to fill your belly.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <!-- Filters -->
+    <div class="menu-filters">
+      <button class="filter-btn active" onclick="filterMenu('all', this)">All Items</button>
+      <button class="filter-btn" onclick="filterMenu('soups', this)">Soups</button>
+      <button class="filter-btn" onclick="filterMenu('rice', this)">Rice Dishes</button>
+      <button class="filter-btn" onclick="filterMenu('swallows', this)">Swallows</button>
+      <button class="filter-btn" onclick="filterMenu('protein', this)">Proteins</button>
+      <button class="filter-btn" onclick="filterMenu('drinks', this)">Drinks</button>
+    </div>
+
+    <!-- SOUPS -->
+    <div class="menu-section" data-category="soups">
+      <div class="menu-section-title">Soups</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#7B3F00,#C0392B)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Egusi Soup</span>
+              <span class="menu-item-price">NGN 2,000</span>
+            </div>
+            <p class="menu-item-desc">Ground melon seeds cooked in palm oil with assorted meat, fish, and crayfish. Rich, thick, and deeply satisfying.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●●</span>○○ Medium heat</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#1B5E20,#C0392B)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Afang Soup</span>
+              <span class="menu-item-price">NGN 2,500</span>
+            </div>
+            <p class="menu-item-desc">Classic Cross River soup with afang leaves, waterleaf, dried fish, periwinkle, and assorted meat in a palm oil base.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●●●</span>○ Hot</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#E65100,#922B21)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Pepper Soup</span>
+              <span class="menu-item-price">NGN 2,200</span>
+            </div>
+            <p class="menu-item-desc">Fiery spiced broth with catfish or goat meat. The kind that clears your sinuses and warms your chest from the inside.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●●●●</span> Very hot</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#BF360C,#5D4037)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Banga Soup</span>
+              <span class="menu-item-price">NGN 2,300</span>
+            </div>
+            <p class="menu-item-desc">Palm nut cream soup seasoned with banga spices, oburunbebe stick, and assorted protein. A Delta/South-South classic.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●●</span>○○ Medium heat</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#33691E,#827717)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Edikaikong</span>
+              <span class="menu-item-price">NGN 2,400</span>
+            </div>
+            <p class="menu-item-desc">Two-leaf Efik/Ibibio soup with fluted pumpkin and waterleaf, loaded with seafood and meat. The soup of royalty.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●●</span>○○ Medium heat</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#3E2723,#C0392B)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Ofe Onugbu (Bitter Leaf)</span>
+              <span class="menu-item-price">NGN 1,900</span>
+            </div>
+            <p class="menu-item-desc">Igbo-style bitter leaf soup with cocoyam thickener, ozu, and assorted meat. Bitter in name, beautiful in taste.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●</span>○○○ Mild</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RICE DISHES -->
+    <div class="menu-section" data-category="rice">
+      <div class="menu-section-title">Rice Dishes</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#E67E22,#922B21)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Party Jollof Rice</span>
+              <span class="menu-item-price">NGN 1,800</span>
+            </div>
+            <p class="menu-item-desc">Smoky, deep orange jollof rice cooked in tomato-pepper base with bay leaves. That firewood-smoke flavor you love.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●●</span>○○ Medium heat</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#33691E,#E67E22)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Nigerian Fried Rice</span>
+              <span class="menu-item-price">NGN 1,800</span>
+            </div>
+            <p class="menu-item-desc">Colourful, fragrant fried rice with vegetables, liver, and prawns. The side dish that steals the show every time.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●●</span>○○○ Mild</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#5D4037,#E67E22)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Coconut Rice</span>
+              <span class="menu-item-price">NGN 2,000</span>
+            </div>
+            <p class="menu-item-desc">Rice cooked in fresh coconut milk with a hint of ginger and bay leaves. Fragrant, slightly sweet, and absolutely luxurious.</p>
+            <div class="menu-item-footer">
+              <span class="spice-tag"><span class="dot">●</span>○○○○ Light</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SWALLOWS -->
+    <div class="menu-section" data-category="swallows">
+      <div class="menu-section-title">Swallows</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#F5E6C8,#D4A462)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Pounded Yam</span>
+              <span class="menu-item-price">NGN 800</span>
+            </div>
+            <p class="menu-item-desc">Silky, stretchy, perfectly smooth pounded yam. No lumps, no shortcuts. The real mortar-and-pestle experience.</p>
+            <div class="menu-item-footer">
+              <span class="badge badge-orange">Most Popular</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#EFEBE9,#8D6E63)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Eba (Garri)</span>
+              <span class="menu-item-price">NGN 500</span>
+            </div>
+            <p class="menu-item-desc">Golden yellow eba with the right firmness. Made from quality cassava flour for the perfect chew and stretch with your soup.</p>
+            <div class="menu-item-footer">
+              <span class="badge badge-green">Budget Pick</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#E8D5A3,#A0845C)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Fufu</span>
+              <span class="menu-item-price">NGN 600</span>
+            </div>
+            <p class="menu-item-desc">Soft, stretchy fermented cassava fufu. The one that wraps around your soup and delivers every bit of flavour to your tongue.</p>
+            <div class="menu-item-footer">
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#424242,#757575)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Wheat / Semovita</span>
+              <span class="menu-item-price">NGN 700</span>
+            </div>
+            <p class="menu-item-desc">Smooth and consistent wheat or semovita swallow. A great option if you want something lighter to pair with heavy soups.</p>
+            <div class="menu-item-footer">
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROTEINS -->
+    <div class="menu-section" data-category="protein">
+      <div class="menu-section-title">Proteins & Sides</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#BF360C,#E67E22)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Grilled Chicken</span>
+              <span class="menu-item-price">NGN 1,500</span>
+            </div>
+            <p class="menu-item-desc">Whole or half chicken marinated in our special spice blend and grilled to perfection. Juicy inside, charred outside.</p>
+            <div class="menu-item-footer">
+              <span class="badge badge-red">Best With Jollof</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#4E342E,#BF360C)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Goat Meat</span>
+              <span class="menu-item-price">NGN 1,800</span>
+            </div>
+            <p class="menu-item-desc">Tender stewed goat meat, slow-cooked with onions and peppers until it practically falls apart. Add to any soup or order solo.</p>
+            <div class="menu-item-footer">
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#1A237E,#0D47A1)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Catfish (Point & Kill)</span>
+              <span class="menu-item-price">NGN 2,000</span>
+            </div>
+            <p class="menu-item-desc">Fresh catfish prepared your way — pepper soup style, grilled, or stewed. Freshness is guaranteed because we don't do frozen.</p>
+            <div class="menu-item-footer">
+              <span class="badge badge-green">Fresh Daily</span>
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="menu-section" data-category="drinks">
+      <div class="menu-section-title">Drinks</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#880E4F,#C62828)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Zobo (Hibiscus Drink)</span>
+              <span class="menu-item-price">NGN 500</span>
+            </div>
+            <p class="menu-item-desc">Chilled homemade zobo with pineapple, ginger, and cloves. Refreshing, tangy, and the perfect companion to a heavy meal.</p>
+            <div class="menu-item-footer">
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#F9A825,#E65100)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Fresh Juice (Seasonal)</span>
+              <span class="menu-item-price">NGN 600</span>
+            </div>
+            <p class="menu-item-desc">Freshly blended juice — mango, watermelon, pineapple, or whatever is in season. Ask us what's available today.</p>
+            <div class="menu-item-footer">
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-img"><div class="food-img" style="background:linear-gradient(135deg,#1B5E20,#33691E)"></div></div>
+          <div class="menu-item-body">
+            <div class="menu-item-header">
+              <span class="menu-item-name">Cold Water / Soft Drinks</span>
+              <span class="menu-item-price">NGN 300</span>
+            </div>
+            <p class="menu-item-desc">Chilled sachet water, bottled water, Coke, Pepsi, Fanta, and Malta. Cold and ready to complement your meal.</p>
+            <div class="menu-item-footer">
+              <a href="order.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.82rem;">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order CTA -->
+    <div style="background:var(--cream-dark);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;text-align:center;margin-top:16px;">
+      <h3 style="margin-bottom:10px;">Ready to Order?</h3>
+      <p style="margin-bottom:24px;">Place your order via our order form or message us directly on WhatsApp. We typically confirm within 5 minutes.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="order.html" class="btn btn-primary">Place an Order</a>
+        <a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20order%20from%20Chop%20Belleful" target="_blank" class="btn btn-whatsapp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          Order on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Chop <span>Belleful</span></div>
+        <p class="footer-tagline">Real Nigerian food, real portions, real satisfaction. We cook with love and serve with pride from the heart of Calabar.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="order.html">Order Now</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="#">Delivery Areas</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="https://wa.me/2348000000000">WhatsApp Us</a>
+        <a href="mailto:hello@chopbelleful.com">hello@chopbelleful.com</a>
+        <a href="#">Calabar, Cross River</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Chop Belleful. All rights reserved.</span>
+      <span>Made with ❤️ in Calabar</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20order%20from%20Chop%20Belleful" target="_blank" class="whatsapp-float" title="Order via WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+function filterMenu(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.menu-section').forEach(sec => {
+    if (category === 'all' || sec.dataset.category === category) {
+      sec.style.display = '';
+    } else {
+      sec.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

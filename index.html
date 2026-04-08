@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chop Belleful — Real Nigerian Food. Real Satisfaction.</title>
+  <meta name="description" content="Chop Belleful serves authentic Nigerian meals that fill your belly and warm your soul. Order now for delivery or pickup in Calabar." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 92vh;
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 5%;
+      gap: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 60% 50%, rgba(192,57,43,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px; height: 2px;
+      background: var(--orange);
+    }
+    .hero h1 {
+      color: var(--white);
+      margin-bottom: 22px;
+      font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 38px;
+      max-width: 460px;
+    }
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.88rem;
+      margin-top: 32px;
+    }
+    .hero-rating .stars { font-size: 0.9rem; }
+
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-end;
+    }
+    .hero-main-img {
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 4/3;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .hero-main-img .food-img {
+      width: 100%; height: 100%;
+    }
+    .hero-card-row {
+      display: flex;
+      gap: 14px;
+      width: 100%;
+      max-width: 480px;
+    }
+    .hero-mini-card {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 16px;
+      backdrop-filter: blur(6px);
+    }
+    .hero-mini-card .num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-mini-card .lbl {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 4px;
+    }
+
+    /* ===== MARQUEE ===== */
+    .marquee-bar {
+      background: var(--red);
+      padding: 13px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 0;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-track span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 0 32px;
+    }
+    .marquee-track span.dot {
+      padding: 0;
+      color: rgba(255,255,255,0.5);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ===== WHY SECTION ===== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .why-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .why-icon {
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .why-card h3 { margin-bottom: 10px; font-size: 1.15rem; }
+    .why-card p  { font-size: 0.92rem; }
+
+    /* ===== FEATURED DISHES ===== */
+    .dishes-section { background: var(--cream-dark); }
+    .dishes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .dish-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid var(--border);
+    }
+    .dish-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .dish-img {
+      aspect-ratio: 4/3;
+    }
+    .dish-img .food-img {
+      width: 100%; height: 100%;
+    }
+    .dish-body { padding: 20px; }
+    .dish-body h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .dish-body p  { font-size: 0.88rem; margin-bottom: 14px; }
+    .dish-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .dish-price {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .testi-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+    }
+    .testi-quote {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--red);
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 600; font-size: 0.9rem; }
+    .testi-loc  { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ===== CTA BANNER ===== */
+    .cta-banner {
+      background: var(--red);
+      padding: 80px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E") repeat;
+    }
+    .cta-banner h2 { color: var(--white); position: relative; margin-bottom: 14px; }
+    .cta-banner p  { color: rgba(255,255,255,0.75); position: relative; max-width: 500px; margin: 0 auto 36px; }
+    .cta-banner .btn { position: relative; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 80px 5% 60px; }
+      .hero-visual { display: none; }
+      .why-grid, .dishes-grid, .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .why-grid, .dishes-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">Chop <span>Belleful</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="order.html" class="nav-cta">Order Now</a></li>
+  </ul>
+  <div class="nav-burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Authentic Nigerian Food</div>
+    <h1 class="anim-fade-up">Eat Until Your <em>Belle Full</em></h1>
+    <p class="hero-sub anim-fade-up anim-delay-1">
+      Real Nigerian meals made with love, fresh ingredients, and the kind of seasoning your mama never told anyone about. Order now — your belly deserves it.
+    </p>
+    <div class="hero-btns anim-fade-up anim-delay-2">
+      <a href="order.html" class="btn btn-primary">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 5h14M10 19a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        Order Now
+      </a>
+      <a href="menu.html" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.3);color:#fff;">
+        See the Menu
+      </a>
+    </div>
+    <div class="hero-rating anim-fade-up anim-delay-3">
+      <span class="stars">★★★★★</span>
+      <span>4.9 rating · 500+ happy customers</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-main-img">
+      <div class="food-img large" style="background:linear-gradient(135deg,#8D4E1A 0%,#C0392B 50%,#E67E22 100%)"></div>
+    </div>
+    <div class="hero-card-row">
+      <div class="hero-mini-card">
+        <div class="num" data-counter data-suffix="+">500</div>
+        <div class="lbl">Happy Customers</div>
+      </div>
+      <div class="hero-mini-card">
+        <div class="num" data-counter data-suffix="+">25</div>
+        <div class="lbl">Menu Items</div>
+      </div>
+      <div class="hero-mini-card">
+        <div class="num">4.9</div>
+        <div class="lbl">Star Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Egusi Soup</span><span class="dot">·</span>
+    <span>Jollof Rice</span><span class="dot">·</span>
+    <span>Afang Soup</span><span class="dot">·</span>
+    <span>Pounded Yam</span><span class="dot">·</span>
+    <span>Pepper Soup</span><span class="dot">·</span>
+    <span>Banga Soup</span><span class="dot">·</span>
+    <span>Fried Rice</span><span class="dot">·</span>
+    <span>Ofe Onugbu</span><span class="dot">·</span>
+    <span>Suya Platter</span><span class="dot">·</span>
+    <span>Edikaikong</span><span class="dot">·</span>
+    <!-- duplicate for seamless loop -->
+    <span>Egusi Soup</span><span class="dot">·</span>
+    <span>Jollof Rice</span><span class="dot">·</span>
+    <span>Afang Soup</span><span class="dot">·</span>
+    <span>Pounded Yam</span><span class="dot">·</span>
+    <span>Pepper Soup</span><span class="dot">·</span>
+    <span>Banga Soup</span><span class="dot">·</span>
+    <span>Fried Rice</span><span class="dot">·</span>
+    <span>Ofe Onugbu</span><span class="dot">·</span>
+    <span>Suya Platter</span><span class="dot">·</span>
+    <span>Edikaikong</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="section">
+  <div class="container">
+    <div class="section-center">
+      <span class="section-tag">Why Choose Us</span>
+      <h2>Food That Hits Different</h2>
+      <p>We don't do shortcuts. Every pot is seasoned right, every portion is generous, and every meal is made to remind you of home.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card" data-reveal="0">
+        <span class="why-icon">🫙</span>
+        <h3>Real Ingredients Only</h3>
+        <p>No powder magic, no artificial shortcuts. We source fresh produce and authentic spices — the way it's supposed to be done.</p>
+      </div>
+      <div class="why-card" data-reveal="100">
+        <span class="why-icon">🔥</span>
+        <h3>Cooked to Order</h3>
+        <p>Your food is cooked fresh when you order. No reheating, no yesterday's batch. You deserve a hot, fresh meal every time.</p>
+      </div>
+      <div class="why-card" data-reveal="200">
+        <span class="why-icon">🚚</span>
+        <h3>Fast Delivery</h3>
+        <p>We know hunger doesn't wait. That's why we move fast to get your food to you hot and on time, every single time.</p>
+      </div>
+      <div class="why-card" data-reveal="0">
+        <span class="why-icon">💰</span>
+        <h3>Belly-Filling Portions</h3>
+        <p>You're not paying for a taste. You're paying for a full belly. Our portions are generous — no stingy plate here.</p>
+      </div>
+      <div class="why-card" data-reveal="100">
+        <span class="why-icon">📱</span>
+        <h3>Easy WhatsApp Orders</h3>
+        <p>No complicated apps. Just message us on WhatsApp, tell us what you want, and we handle the rest.</p>
+      </div>
+      <div class="why-card" data-reveal="200">
+        <span class="why-icon">❤️</span>
+        <h3>Made With Love</h3>
+        <p>Food cooked without love tastes like it. Every pot here is stirred with care and the intention to make you happy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEATURED DISHES -->
+<section class="section dishes-section">
+  <div class="container">
+    <div class="section-center">
+      <span class="section-tag">Our Menu</span>
+      <h2>Crowd Favourites</h2>
+      <p>The dishes that keep our customers coming back. Pick your poison — or try them all, we won't judge.</p>
+    </div>
+    <div class="dishes-grid">
+      <div class="dish-card" data-reveal="0">
+        <div class="dish-img">
+          <div class="food-img" style="background:linear-gradient(135deg,#7B3F00 0%,#C0392B 70%)"></div>
+        </div>
+        <div class="dish-body">
+          <span class="badge badge-red">Best Seller</span>
+          <h3>Egusi Soup + Pounded Yam</h3>
+          <p>Thick, meaty egusi with assorted protein, served with silky smooth pounded yam. This one hits home every time.</p>
+          <div class="dish-footer">
+            <span class="dish-price">NGN 2,500</span>
+            <a href="order.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Order</a>
+          </div>
+        </div>
+      </div>
+      <div class="dish-card" data-reveal="100">
+        <div class="dish-img">
+          <div class="food-img" style="background:linear-gradient(135deg,#27AE60 0%,#C0392B 70%)"></div>
+        </div>
+        <div class="dish-body">
+          <span class="badge badge-orange">Customer Fave</span>
+          <h3>Afang Soup + Eba</h3>
+          <p>Cross River's finest. Rich afang loaded with dried fish, periwinkle, and beef. Paired with firm golden eba.</p>
+          <div class="dish-footer">
+            <span class="dish-price">NGN 2,800</span>
+            <a href="order.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Order</a>
+          </div>
+        </div>
+      </div>
+      <div class="dish-card" data-reveal="200">
+        <div class="dish-img">
+          <div class="food-img" style="background:linear-gradient(135deg,#E67E22 0%,#922B21 70%)"></div>
+        </div>
+        <div class="dish-body">
+          <span class="badge badge-green">New Item</span>
+          <h3>Party Jollof + Chicken</h3>
+          <p>Smoky, orange-bottomed jollof rice the way it tastes at Nigerian parties — with whole grilled chicken on the side.</p>
+          <div class="dish-footer">
+            <span class="dish-price">NGN 3,000</span>
+            <a href="order.html" class="btn btn-primary" style="padding:9px 18px;font-size:0.85rem;">Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="menu.html" class="btn btn-secondary">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="section-center">
+      <span class="section-tag">What People Say</span>
+      <h2>Real People, Real Bellies</h2>
+      <p>Don't take our word for it. Here's what our customers are saying after every meal.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card" data-reveal="0">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"I ordered the egusi and pounded yam on a Sunday and my whole afternoon was sorted. Full belly, good vibes. This is the real deal."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AN</div>
+          <div>
+            <div class="testi-name">Amaka Nwosu</div>
+            <div class="testi-loc">Calabar, Cross River</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-reveal="100">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"The afang soup reminded me exactly of my grandmother's recipe. I don't know how they do it but this food carries serious love."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">EO</div>
+          <div>
+            <div class="testi-name">Effiong Okon</div>
+            <div class="testi-loc">Calabar South</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" data-reveal="200">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Ordered for my office and everyone went quiet when the food arrived. You know Nigerian food is good when 10 people forget to talk."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">CU</div>
+          <div>
+            <div class="testi-name">Chidera Ugwu</div>
+            <div class="testi-loc">Calabar Municipal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;">
+      <a href="reviews.html" class="btn btn-secondary">Read All Reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Your Belly Won't Fill Itself</h2>
+  <p>Place your order now and get real Nigerian food delivered to your door. Fast, fresh, and full portion guaranteed.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+    <a href="order.html" class="btn btn-white">Order Now</a>
+    <a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20order%20from%20Chop%20Belleful" target="_blank" class="btn btn-whatsapp">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp Order
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Chop <span>Belleful</span></div>
+        <p class="footer-tagline">Real Nigerian food, real portions, real satisfaction. We cook with love and serve with pride from the heart of Calabar.</p>
+        <div class="footer-social">
+          <a href="#" title="Instagram">IG</a>
+          <a href="#" title="Facebook">FB</a>
+          <a href="#" title="Twitter/X">X</a>
+          <a href="#" title="TikTok">TK</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="order.html">Order Now</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+        <a href="#">Delivery Areas</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="https://wa.me/2348000000000">WhatsApp Us</a>
+        <a href="mailto:hello@chopbelleful.com">hello@chopbelleful.com</a>
+        <a href="#">Calabar, Cross River State</a>
+        <a href="#">Mon – Sun: 9am – 9pm</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Chop Belleful. All rights reserved.</span>
+      <span>Made with ❤️ in Calabar</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20order%20from%20Chop%20Belleful" target="_blank" class="whatsapp-float" title="Order via WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>

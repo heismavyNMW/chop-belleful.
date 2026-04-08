@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Now — Chop Belleful</title>
+  <meta name="description" content="Place your Chop Belleful order online or via WhatsApp. Fast confirmation, hot delivery to your door in Calabar." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .order-form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+    }
+    .order-form-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .order-form-sub { font-size: 0.9rem; margin-bottom: 28px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .step-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 28px 0 20px;
+    }
+    .step-divider span {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .step-divider::before,
+    .step-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+    .sidebar-card h3 {
+      font-size: 1rem;
+      margin-bottom: 18px;
+      font-family: var(--font-display);
+    }
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+    .info-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 2px; }
+    .info-val   { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+
+    .whatsapp-box {
+      background: linear-gradient(135deg, #25D366, #1ebe5d);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      text-align: center;
+      color: white;
+    }
+    .whatsapp-box h3 { color: white; font-size: 1rem; margin-bottom: 8px; }
+    .whatsapp-box p  { color: rgba(255,255,255,0.85); font-size: 0.88rem; margin-bottom: 20px; }
+
+    .success-banner {
+      display: none;
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      color: #155724;
+      font-weight: 500;
+    }
+
+    .delivery-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .delivery-tag::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      background: rgba(39,174,96,0.12);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .order-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Chop <span>Belleful</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="order.html" class="nav-cta active">Order Now</a></li>
+  </ul>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Place Your Order</span>
+  <h1>Order Your Belly-Filler</h1>
+  <p>Fill out the form below or tap the WhatsApp button. We confirm every order within 5 minutes and deliver within Calabar.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="order-layout">
+      <!-- ORDER FORM -->
+      <div>
+        <div id="success-msg" class="success-banner">
+          ✅ Your order has been received! We'll confirm via WhatsApp within 5 minutes.
+        </div>
+        <div class="order-form-card">
+          <div class="delivery-tag">Free delivery on orders over NGN 5,000</div>
+          <div class="order-form-title">Place Your Order</div>
+          <p class="order-form-sub">Fill all fields accurately. We'll call or WhatsApp you to confirm.</p>
+
+          <form id="orderForm" onsubmit="submitOrder(event)" novalidate>
+
+            <!-- PERSONAL INFO -->
+            <div class="step-divider"><span>Your Details</span></div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" placeholder="e.g. Amaka" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" placeholder="e.g. Nwosu" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">WhatsApp / Phone *</label>
+                <input type="tel" id="phone" placeholder="08012345678" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email (optional)</label>
+                <input type="email" id="email" placeholder="you@email.com" />
+              </div>
+            </div>
+
+            <!-- ORDER DETAILS -->
+            <div class="step-divider"><span>Your Order</span></div>
+            <div class="form-group">
+              <label for="items">What would you like? *</label>
+              <textarea id="items" rows="4" placeholder="e.g. 2x Egusi Soup + Pounded Yam&#10;1x Afang Soup + Eba&#10;2x Chilled Zobo" required></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="serving">Number of Servings</label>
+                <select id="serving">
+                  <option value="1">1 person</option>
+                  <option value="2">2 people</option>
+                  <option value="3-5">3–5 people</option>
+                  <option value="6-10">6–10 people (group/office)</option>
+                  <option value="10+">10+ people (event)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="spice">Spice Level</label>
+                <select id="spice">
+                  <option value="medium">Medium (default)</option>
+                  <option value="mild">Mild (less pepper)</option>
+                  <option value="hot">Hot (extra pepper)</option>
+                  <option value="very-hot">Very Hot (danger zone)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- DELIVERY -->
+            <div class="step-divider"><span>Delivery</span></div>
+            <div class="form-group">
+              <label for="delivery-type">Order Type *</label>
+              <select id="delivery-type" onchange="togglePickup()">
+                <option value="delivery">Home Delivery</option>
+                <option value="pickup">Self Pickup</option>
+              </select>
+            </div>
+            <div id="address-section">
+              <div class="form-group">
+                <label for="address">Delivery Address *</label>
+                <input type="text" id="address" placeholder="Street, area, landmark" />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="area">Area / Neighbourhood</label>
+                  <select id="area">
+                    <option value="">Select area</option>
+                    <option>Calabar Municipal</option>
+                    <option>Calabar South</option>
+                    <option>Watt Market Area</option>
+                    <option>State Housing</option>
+                    <option>UNICAL Area</option>
+                    <option>Marian Road</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="delivery-time">Preferred Delivery Time</label>
+                  <select id="delivery-time">
+                    <option value="asap">As soon as possible</option>
+                    <option value="1hr">Within 1 hour</option>
+                    <option value="lunch">Lunch time (12pm–2pm)</option>
+                    <option value="dinner">Dinner time (6pm–8pm)</option>
+                    <option value="schedule">I'll specify in notes</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- NOTES -->
+            <div class="form-group" style="margin-top:8px;">
+              <label for="notes">Extra Notes (optional)</label>
+              <input type="text" id="notes" placeholder="e.g. No onions, add extra meat, call when close..." />
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;padding:16px;">
+              Place My Order
+            </button>
+            <p style="font-size:0.8rem;text-align:center;margin-top:12px;">We'll confirm via WhatsApp within 5 minutes of receiving your order.</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div>
+        <!-- WhatsApp Box -->
+        <div class="whatsapp-box" style="margin-bottom:20px;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white" style="margin:0 auto 12px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <h3>Prefer WhatsApp?</h3>
+          <p>Message us directly and we'll sort your order in the chat. Fast, easy, no form needed.</p>
+          <a href="https://wa.me/2348000000000?text=Hello!%20I%20want%20to%20place%20an%20order%20from%20Chop%20Belleful" target="_blank" class="btn btn-white" style="width:100%;justify-content:center;">
+            Chat on WhatsApp
+          </a>
+        </div>
+
+        <!-- Info -->
+        <div class="sidebar-card">
+          <h3>Delivery Info</h3>
+          <div class="info-row">
+            <span class="info-icon">🕐</span>
+            <div>
+              <div class="info-label">Delivery Time</div>
+              <div class="info-val">30–60 minutes (within Calabar)</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">📍</span>
+            <div>
+              <div class="info-label">Coverage Area</div>
+              <div class="info-val">Calabar Municipal & South, UNICAL area, Marian Road</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">💸</span>
+            <div>
+              <div class="info-label">Delivery Fee</div>
+              <div class="info-val">NGN 500 (Free on orders over NGN 5,000)</div>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="info-icon">💳</span>
+            <div>
+              <div class="info-label">Payment</div>
+              <div class="info-val">Bank transfer or cash on delivery</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hours -->
+        <div class="sidebar-card">
+          <h3>Opening Hours</h3>
+          <div style="font-size:0.88rem;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:var(--text-muted);">Monday – Friday</span>
+              <span style="font-weight:600;">9:00am – 9:00pm</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:var(--text-muted);">Saturday</span>
+              <span style="font-weight:600;">8:00am – 10:00pm</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;">
+              <span style="color:var(--text-muted);">Sunday</span>
+              <span style="font-weight:600;">11:00am – 8:00pm</span>
+            </div>
+            <div style="background:rgba(39,174,96,0.08);border-radius:var(--radius);padding:10px 12px;margin-top:4px;">
+              <span style="color:var(--green);font-size:0.82rem;font-weight:600;">✓ We're open today</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Chop <span>Belleful</span></div>
+        <p class="footer-tagline">Real Nigerian food, real portions, real satisfaction.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+        <a href="order.html">Order Now</a>
+      </div>
+      <div class="footer-col"><h4>Info</h4><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://wa.me/2348000000000">WhatsApp Us</a><a href="mailto:hello@chopbelleful.com">hello@chopbelleful.com</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Chop Belleful. All rights reserved.</span>
+      <span>Made with ❤️ in Calabar</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2348000000000" target="_blank" class="whatsapp-float">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+function togglePickup() {
+  const type = document.getElementById('delivery-type').value;
+  document.getElementById('address-section').style.display = type === 'pickup' ? 'none' : '';
+}
+function submitOrder(e) {
+  e.preventDefault();
+  const fname = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const items = document.getElementById('items').value.trim();
+  if (!fname || !phone || !items) {
+    alert('Please fill in your name, phone number, and what you would like to order.');
+    return;
+  }
+  document.getElementById('success-msg').style.display = 'block';
+  document.getElementById('orderForm').reset();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // In production: send to backend / WhatsApp API / Google Sheets
+}
+</script>
+</body>
+</html>

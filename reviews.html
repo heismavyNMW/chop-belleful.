@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviews — Chop Belleful</title>
+  <meta name="description" content="Read what Chop Belleful customers say. Real reviews from real people who have tasted and loved our food." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .rating-summary {
+      background: var(--black);
+      padding: 60px 5%;
+      text-align: center;
+    }
+    .rating-big {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .rating-stars { font-size: 1.6rem; color: var(--orange); margin-bottom: 10px; }
+    .rating-label { color: rgba(255,255,255,0.55); font-size: 0.9rem; }
+    .rating-bars { max-width: 340px; margin: 32px auto 0; }
+    .bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .bar-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); width: 40px; text-align: right; flex-shrink: 0; }
+    .bar-track { flex: 1; height: 6px; background: rgba(255,255,255,0.12); border-radius: 3px; overflow: hidden; }
+    .bar-fill  { height: 100%; background: var(--orange); border-radius: 3px; transition: width 1.2s ease; }
+    .bar-count { font-size: 0.78rem; color: rgba(255,255,255,0.4); width: 28px; flex-shrink: 0; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .review-name { font-weight: 600; font-size: 0.9rem; }
+    .review-loc  { font-size: 0.78rem; color: var(--text-muted); }
+    .review-date { font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; }
+    .review-stars { font-size: 0.9rem; color: var(--orange); margin-bottom: 12px; }
+    .review-text { font-size: 0.9rem; line-height: 1.8; color: var(--text); flex: 1; font-style: italic; }
+    .review-dish { margin-top: 14px; font-size: 0.78rem; font-weight: 600; color: var(--red); }
+
+    .leave-review {
+      background: var(--cream-dark);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .leave-review h3 { margin-bottom: 6px; }
+    .leave-review > p { margin-bottom: 24px; }
+    .star-select { display: flex; gap: 6px; margin-bottom: 6px; }
+    .star-select label {
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--border);
+      transition: color 0.15s;
+      line-height: 1;
+    }
+    .star-select input[type="radio"] { display: none; }
+    .star-select:hover label,
+    .star-select label:hover ~ label { color: var(--border); }
+    .star-select label:hover,
+    .star-select label:hover ~ label { color: var(--border); }
+    .star-select input:checked ~ label { color: var(--border); }
+
+    @media (max-width: 900px) { .reviews-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .reviews-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">Chop <span>Belleful</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="reviews.html" class="active">Reviews</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="order.html" class="nav-cta">Order Now</a></li>
+  </ul>
+  <div class="nav-burger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <span class="section-tag">Customer Reviews</span>
+  <h1>Real People, Real Bellies</h1>
+  <p>We don't pay for reviews. Every word here was earned, one hot meal at a time.</p>
+</div>
+
+<!-- RATING SUMMARY -->
+<div class="rating-summary">
+  <div class="container">
+    <div class="rating-big">4.9</div>
+    <div class="rating-stars">★★★★★</div>
+    <div class="rating-label">Based on 127 verified reviews</div>
+    <div class="rating-bars">
+      <div class="bar-row">
+        <span class="bar-label">5 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:91%"></div></div>
+        <span class="bar-count">116</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">4 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:7%"></div></div>
+        <span class="bar-count">9</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">3 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:1.5%"></div></div>
+        <span class="bar-count">2</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">2 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+        <span class="bar-count">0</span>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label">1 ★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+        <span class="bar-count">0</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="section">
+  <div class="container">
+    <div class="reviews-grid">
+
+      <div class="review-card" data-reveal="0">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--red)">AN</div>
+            <div>
+              <div class="review-name">Amaka Nwosu</div>
+              <div class="review-loc">Calabar Municipal</div>
+            </div>
+          </div>
+          <span class="review-date">Jan 2025</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I ordered the egusi and pounded yam on a Sunday and my whole afternoon was sorted. Full belly, good vibes. This is the real deal — no stingy portion, no powder shortcut. I could taste the palm oil was fresh."</p>
+        <div class="review-dish">Ordered: Egusi Soup + Pounded Yam</div>
+      </div>
+
+      <div class="review-card" data-reveal="100">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--earth)">EO</div>
+            <div>
+              <div class="review-name">Effiong Okon</div>
+              <div class="review-loc">Calabar South</div>
+            </div>
+          </div>
+          <span class="review-date">Feb 2025</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The afang soup reminded me exactly of my grandmother's recipe from Akpabuyo. I don't know how they do it but this food carries serious love. Delivery was fast — I didn't wait more than 40 minutes."</p>
+        <div class="review-dish">Ordered: Afang Soup + Eba</div>
+      </div>
+
+      <div class="review-card" data-reveal="200">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--green)">CU</div>
+            <div>
+              <div class="review-name">Chidera Ugwu</div>
+              <div class="review-loc">UNICAL Campus</div>
+            </div>
+          </div>
+          <span class="review-date">Dec 2024</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Ordered for my entire office — 8 people — and everyone went silent when the food arrived. You know Nigerian food is good when 8 grown adults forget to talk. We finished everything. Zero leftovers."</p>
+        <div class="review-dish">Ordered: Group Office Lunch (Mixed)</div>
+      </div>
+
+      <div class="review-card" data-reveal="0">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:#8e44ad">IF</div>
+            <div>
+              <div class="review-name">Ife Fashola</div>
+              <div class="review-loc">Marian Road</div>
+            </div>
+          </div>
+          <span class="review-date">Mar 2025</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The party jollof rice is EXACTLY how it tastes at Nigerian parties. That smoky bottom rice, the chicken that's well seasoned. I've been ordering every Friday now. My weekend is not complete without it."</p>
+        <div class="review-dish">Ordered: Party Jollof + Grilled Chicken</div>
+      </div>
+
+      <div class="review-card" data-reveal="100">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--orange)">BN</div>
+            <div>
+              <div class="review-name">Blessing Nwachukwu</div>
+              <div class="review-loc">State Housing</div>
+            </div>
+          </div>
+          <span class="review-date">Nov 2024</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The pepper soup is dangerous. I ordered it for my husband who had a cold and by the time he finished, he was sweating and healed. Best medicine in Calabar. The catfish was fresh — you could tell immediately."</p>
+        <div class="review-dish">Ordered: Catfish Pepper Soup</div>
+      </div>
+
+      <div class="review-card" data-reveal="200">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:#2c3e50">KE</div>
+            <div>
+              <div class="review-name">Kingsley Etim</div>
+              <div class="review-loc">Watt Market Area</div>
+            </div>
+          </div>
+          <span class="review-date">Jan 2025</span>
+        </div>
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">"The edikaikong was excellent — proper periwinkle, well-prepared waterleaf. Delivery was slightly delayed but the food was still hot when it arrived. Would have been 5 stars if timing was a bit better."</p>
+        <div class="review-dish">Ordered: Edikaikong + Pounded Yam</div>
+      </div>
+
+      <div class="review-card" data-reveal="0">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:#c0392b">TI</div>
+            <div>
+              <div class="review-name">Taiwo Ibe</div>
+              <div class="review-loc">Calabar Municipal</div>
+            </div>
+          </div>
+          <span class="review-date">Feb 2025</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"I'm Lagos-based but visited Calabar for business. A colleague recommended Chop Belleful and now I'm genuinely upset I don't live here. The banga soup was things I only dreamed about. Already planning my next trip."</p>
+        <div class="review-dish">Ordered: Banga Soup + Fufu</div>
+      </div>
+
+      <div class="review-card" data-reveal="100">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:var(--earth-light)">NA</div>
+            <div>
+              <div class="review-name">Ngozi Adebiyi</div>
+              <div class="review-loc">Calabar South</div>
+            </div>
+          </div>
+          <span class="review-date">Mar 2025</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Ordered for my birthday party — 15 people. Everything was on time, hot, and perfectly seasoned. My guests kept asking who cooked the food. I gave every one of them the number. Customer service was also very responsive."</p>
+        <div class="review-dish">Ordered: Birthday Catering (Mixed Menu)</div>
+      </div>
+
+      <div class="review-card" data-reveal="200">
+        <div class="review-top">
+          <div class="review-author">
+            <div class="review-avatar" style="background:#27ae60">OC</div>
+            <div>
+              <div class="review-name">Obinna Chukwu</div>
+              <div class="review-loc">UNICAL Area</div>
+            </div>
+          </div>
+          <span class="review-date">Apr 2025</span>
+        </div>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"As a student, I don't always have money for big restaurants. Chop Belleful is affordable and the quantity is enough to fill you properly. I've been a regular customer for 8 months now. Best food decision I've made in Calabar."</p>
+        <div class="review-dish">Ordered: Egusi Soup + Eba</div>
+      </div>
+
+    </div>
+
+    <!-- LEAVE A REVIEW -->
+    <div class="leave-review" data-reveal="0">
+      <span class="section-tag">Share Your Experience</span>
+      <h3>Leave a Review</h3>
+      <p>Had a meal from Chop Belleful? Tell the world how your belly felt.</p>
+      <form onsubmit="submitReview(event)" novalidate>
+        <div class="form-group">
+          <label>Your Rating *</label>
+          <div style="margin-bottom:14px;">
+            <select class="form-group" style="display:inline-block;" id="r-rating">
+              <option value="">Select rating</option>
+              <option value="5">★★★★★ (Excellent)</option>
+              <option value="4">★★★★☆ (Very Good)</option>
+              <option value="3">★★★☆☆ (Good)</option>
+              <option value="2">★★☆☆☆ (Fair)</option>
+              <option value="1">★☆☆☆☆ (Poor)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label for="r-name">Your Name *</label>
+            <input type="text" id="r-name" placeholder="First name + last initial" required />
+          </div>
+          <div class="form-group">
+            <label for="r-dish">What Did You Order?</label>
+            <input type="text" id="r-dish" placeholder="e.g. Egusi Soup + Pounded Yam" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="r-review">Your Review *</label>
+          <textarea id="r-review" rows="4" placeholder="Tell us how it went. Was your belly full? Did it taste like home?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--red);padding:70px 5%;text-align:center;">
+  <h2 style="color:var(--white);margin-bottom:12px;">Ready to Join the List?</h2>
+  <p style="color:rgba(255,255,255,0.75);max-width:460px;margin:0 auto 32px;">Order your first meal and find out what everyone is talking about.</p>
+  <a href="order.html" class="btn btn-white">Order Now</a>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Chop <span>Belleful</span></div>
+        <p class="footer-tagline">Real Nigerian food, real portions, real satisfaction.</p>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="order.html">Order Now</a></div>
+      <div class="footer-col"><h4>Info</h4><a href="reviews.html">Reviews</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="https://wa.me/2348000000000">WhatsApp Us</a><a href="mailto:hello@chopbelleful.com">hello@chopbelleful.com</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Chop Belleful. All rights reserved.</span>
+      <span>Made with ❤️ in Calabar</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/2348000000000" target="_blank" class="whatsapp-float">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+function submitReview(e) {
+  e.preventDefault();
+  alert('Thank you for your review! We appreciate your feedback.');
+  e.target.reset();
+}
+</script>
+</body>
+</html>
